@@ -28,15 +28,3 @@ RUN yum update -y && \
     yum clean all
 COPY --from=builder /go/src/github.com/kubernetes-sigs/aws-ebs-csi-driver/bin/aws-ebs-csi-driver /bin/aws-ebs-csi-driver
 ENTRYPOINT ["/bin/aws-ebs-csi-driver"]
-
-FROM mcr.microsoft.com/windows/servercore:1809 AS windows-1809
-COPY --from=builder /go/src/github.com/kubernetes-sigs/aws-ebs-csi-driver/bin/aws-ebs-csi-driver.exe /aws-ebs-csi-driver.exe
-ENTRYPOINT ["/aws-ebs-csi-driver.exe"]
-
-FROM mcr.microsoft.com/windows/servercore:2004 AS windows-2004
-COPY --from=builder /go/src/github.com/kubernetes-sigs/aws-ebs-csi-driver/bin/aws-ebs-csi-driver.exe /aws-ebs-csi-driver.exe
-ENTRYPOINT ["/aws-ebs-csi-driver.exe"]
-
-FROM mcr.microsoft.com/windows/servercore:20H2 AS windows-20H2
-COPY --from=builder /go/src/github.com/kubernetes-sigs/aws-ebs-csi-driver/bin/aws-ebs-csi-driver.exe /aws-ebs-csi-driver.exe
-ENTRYPOINT ["/aws-ebs-csi-driver.exe"]
