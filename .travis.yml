@@ -1,5 +1,5 @@
 language: go
-go_import_path: github.com/kubernetes-sigs/aws-ebs-csi-driver
+go_import_path: github.com/DeepSpace2/test-csi-driver
 dist: xenial
 env:
   global:
